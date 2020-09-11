@@ -79,8 +79,8 @@ Rectangle {
     property var currentUser: userModel.lastUser
 
     Rectangle {
-      width: 1000
-      height: 30
+      width: 0
+      height: 0
       color: 'red'
       Repeater {
         id: userModelData
@@ -92,7 +92,6 @@ Rectangle {
         delegate: Text {
           visible: false
           text: ''
-          font.pixelSize: 9
           Component.onCompleted: {
             userModelData.users[index] = {
               'name': name,
@@ -104,40 +103,45 @@ Rectangle {
         }
       }
     }
-    Image {
-      id: face
-      source: userModelData.users[userModel.lastIndex].icon
 
-      width: 100
-      height: 100
-    }
+    Column {
+      anchors.fill: parent
 
-    Text {
-      x: 120
-      y: 10
-      width: 100
-      height: 30
-      text: userModelData.users[userModel.lastIndex].name
-    }
+      Face {
+        id: face
 
-    TextField {
-      id: userEntry
+        anchors.horizontalCenter: parent.horizontalCenter
 
-      x: 0
-      y: 50
-      width: 200
-      height: 32
-    }
+        source: userModelData.users[userModel.lastIndex].icon
 
-    TextField {
-      id: passwordEntry
+        width: 256
+        height: 256
+      }
 
-      x: 0
-      y: 100
-      width: 200
-      height: 32
+      Text {
+        id: displayName
 
-      echoMode: TextInput.Password
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: 100
+        height: 30
+        text: userModelData.users[userModel.lastIndex].name
+      }
+
+      QtObject {
+        id: userEntry
+
+        property string text: userModel.lastUser
+      }
+
+      TextField {
+        id: passwordEntry
+
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: 200
+        height: 32
+
+        echoMode: TextInput.Password
+      }
     }
 
     Rectangle {
