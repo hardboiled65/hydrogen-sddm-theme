@@ -1,0 +1,18 @@
+[SddmGreeterTheme]
+Name=Hydrogen
+Name[ko]=하이드로겐
+
+Description=Hydrogen SDDM theme.
+Type=sddm-theme
+Author=Yujeonja
+Copyright=(c) 2020, Yujeonja
+Screenshot=hydrogen.jpg
+License=MIT
+Version=0.1
+MainScript=main.qml
+ConfigFile=theme.conf
+TranslationsDirectory=translations
+Theme-Id=hydrogen
+Theme-API=2.0
+Website=https://github.com/sddm/sddm
+
