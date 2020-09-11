@@ -107,6 +107,8 @@ Rectangle {
     Column {
       anchors.fill: parent
 
+      spacing: 16
+
       Face {
         id: face
 
@@ -114,8 +116,8 @@ Rectangle {
 
         source: userModelData.users[userModel.lastIndex].icon
 
-        width: 256
-        height: 256
+        width: 128
+        height: 128
       }
 
       Text {
@@ -125,6 +127,12 @@ Rectangle {
         width: 100
         height: 30
         text: userModelData.users[userModel.lastIndex].name
+        Rectangle {
+          width: displayName.implicitWidth + 20
+          height: displayName.implicitHeight + 20
+          color: "#e3e2df"
+          z: -1
+        }
       }
 
       QtObject {
@@ -138,7 +146,7 @@ Rectangle {
 
         anchors.horizontalCenter: parent.horizontalCenter
         width: 200
-        height: 32
+        height: 38
 
         echoMode: TextInput.Password
       }
@@ -151,6 +159,7 @@ Rectangle {
       height: 50
 
       color: "blue"
+      radius: 50
       MouseArea {
         anchors.fill: parent
         onClicked: {

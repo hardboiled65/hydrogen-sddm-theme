@@ -13,7 +13,7 @@ Item {
     width: 256
     height: 256
 
-    color: "#e3e2df"
+    color: "#e3e2df" // "#ebf0f3"
     radius: 256
 
     layer.enabled: true
