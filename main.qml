@@ -126,12 +126,20 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         width: 100
         height: 30
-        text: userModelData.users[userModel.lastIndex].name
+        text: this.realNameOrName(userModelData.users[userModel.lastIndex])
         Rectangle {
           width: displayName.implicitWidth + 20
           height: displayName.implicitHeight + 20
           color: "#e3e2df"
           z: -1
+        }
+
+        function realNameOrName(user) {
+          if (user.realName !== '') {
+            return user.realName;
+          } else {
+            return user.name;
+          }
         }
       }
 
