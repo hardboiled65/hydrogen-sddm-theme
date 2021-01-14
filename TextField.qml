@@ -74,7 +74,10 @@ Item {
   TextInput {
     id: text
 
-    anchors.fill: parent
+    anchors.verticalCenter: root.verticalCenter
+    x: 16
+    width: root.width
+    height: 12
     text: ''
     echoMode: root.echoMode
   }
