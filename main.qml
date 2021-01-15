@@ -1,4 +1,5 @@
 import QtQuick 2.12
+import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
 import SddmComponents 2.0
 
@@ -160,6 +161,28 @@ Rectangle {
 
         onKeyPressed: {
           sddm.login(userEntry.text, passwordEntry.text, session.index);
+        }
+      }
+
+      //===============================
+      // System buttons
+      //===============================
+      RowLayout {
+        anchors.horizontalCenter: parent.horizontalCenter
+
+        SystemButton {
+          width: 64
+          height: 64
+
+          text: 'Suspend'
+          source: ''
+        }
+        SystemButton {
+          width: 64
+          height: 64
+
+          text: 'Restart'
+          source: ''
         }
       }
     }
