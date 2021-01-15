@@ -157,6 +157,10 @@ Rectangle {
         height: 38
 
         echoMode: TextInput.Password
+
+        onKeyPressed: {
+          sddm.login(userEntry.text, passwordEntry.text, session.index);
+        }
       }
     }
 

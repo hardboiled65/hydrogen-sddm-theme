@@ -4,6 +4,8 @@ import QtGraphicalEffects 1.0
 Item {
   id: root
 
+  signal keyPressed(var event);
+
   property string text: text.text
   property int echoMode: TextInput.Normal
 
@@ -79,6 +81,13 @@ Item {
     width: root.width
     height: 12
     text: ''
+    focus: true
     echoMode: root.echoMode
+
+    Keys.onPressed: {
+      if (event.key === Qt.Key_Return) {
+        root.keyPressed(event.key);
+      }
+    }
   }
 }
