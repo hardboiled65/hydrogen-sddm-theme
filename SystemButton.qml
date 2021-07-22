@@ -29,20 +29,23 @@ Item {
 
     Image {
       anchors.fill: parent
-      anchors.margins: 5
+      anchors.margins: 8
+
+      sourceSize.width: background.width
+      sourceSize.height: background.height
 
       source: root.source
 
-      layer.enabled: true
-      layer.effect: OpacityMask {
-        maskSource: Rectangle {
-          id: mask
+//      layer.enabled: true
+//      layer.effect: OpacityMask {
+//        maskSource: Rectangle {
+//          id: mask
 
-          width: 60
-          height: 60
-          radius: 60
-        }
-      }
+//          width: 60
+//          height: 60
+//          radius: 60
+//        }
+//      }
     }
   }
 
@@ -64,5 +67,6 @@ Item {
 
   Text {
     text: root.text
+    visible: root.source === ''
   }
 }

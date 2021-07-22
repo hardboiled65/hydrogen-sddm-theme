@@ -121,25 +121,27 @@ Rectangle {
         height: 128
       }
 
-      Text {
-        id: displayName
+      Rectangle {
+        id: displayNameRect
 
         anchors.horizontalCenter: parent.horizontalCenter
-        width: 100
-        height: 30
-        text: this.realNameOrName(userModelData.users[userModel.lastIndex])
-        Rectangle {
-          width: displayName.implicitWidth + 20
-          height: displayName.implicitHeight + 20
-          color: "#e3e2df"
-          z: -1
-        }
 
-        function realNameOrName(user) {
-          if (user.realName !== '') {
-            return user.realName;
-          } else {
-            return user.name;
+        width: displayName.implicitWidth + 30
+        height: displayName.implicitHeight + 20
+        radius: 25
+        color: "#e3e2df"
+        Text {
+          id: displayName
+
+          anchors.centerIn: parent
+          text: this.realNameOrName(userModelData.users[userModel.lastIndex])
+
+          function realNameOrName(user) {
+            if (user.realName !== '') {
+              return user.realName;
+            } else {
+              return user.name;
+            }
           }
         }
       }
@@ -182,7 +184,7 @@ Rectangle {
           height: 64
 
           text: 'Restart'
-          source: ''
+          source: 'images/reboot.svg'
         }
       }
     }
@@ -203,5 +205,11 @@ Rectangle {
         }
       }
     }
-  }
+
+    Rectangle {
+      anchors.fill: parent
+
+      color: '#50ff0000'
+    }
+  } // loginArea
 }
