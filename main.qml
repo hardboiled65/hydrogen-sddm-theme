@@ -17,15 +17,15 @@ Rectangle {
       debugConsole.text += 'Success!\n';
     }
     function onLoginFailed() {
-      debugCOnsole.text += 'Failed!\n';
+      debugConsole.text += 'Failed!\n';
       passwordEntry.text = '';
     }
   }
 
   Background {
     anchors.fill: parent
-    source: 'sample.jpg'
-    fillMode: Image.PreserveAspectCrop
+    source: 'images/metal-texture.png'
+    fillMode: Image.Tile
   }
 
   // Debug console.
@@ -35,11 +35,18 @@ Rectangle {
     height: 300
     color: '#80000000'
     Text {
+      text: root.width + 'x' + root.height
+      color: 'white'
+      font.pixelSize: 14
+    }
+
+    Text {
       id: debugConsole
       anchors.fill: parent
+      anchors.topMargin: 14
       text: 'Debug console\n'
       color: 'white'
-      font.pixelSize: 12
+      font.pixelSize: 14
     }
   }
 
@@ -105,10 +112,10 @@ Rectangle {
       }
     }
 
-    Column {
+    Item {
       anchors.fill: parent
 
-      spacing: 16
+//      spacing: 16
 
       Face {
         id: face
@@ -117,17 +124,19 @@ Rectangle {
 
         source: userModelData.users[userModel.lastIndex].icon
 
-        width: 128
-        height: 128
+        width: root.height / 8.4375
+        height: root.height / 8.4375
       }
 
       Rectangle {
         id: displayNameRect
 
         anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: face.bottom
+        anchors.topMargin: 16
 
         width: displayName.implicitWidth + 30
-        height: displayName.implicitHeight + 20
+        height: displayName.implicitHeight + 14
         radius: 25
         color: "#e3e2df"
         Text {
@@ -156,6 +165,9 @@ Rectangle {
         id: passwordEntry
 
         anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: displayNameRect.bottom
+        anchors.topMargin: 16
+
         width: 200
         height: 38
 
@@ -170,18 +182,23 @@ Rectangle {
       // System buttons
       //===============================
       RowLayout {
+        id: systemButtons
+
+        readonly property real systemButtonSize: root.height / 16.875
+
         anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
 
         SystemButton {
-          width: 64
-          height: 64
+          Layout.preferredWidth: systemButtons.systemButtonSize
+          Layout.preferredHeight: systemButtons.systemButtonSize
 
           text: 'Suspend'
           source: ''
         }
         SystemButton {
-          width: 64
-          height: 64
+          Layout.preferredWidth: systemButtons.systemButtonSize
+          Layout.preferredHeight: systemButtons.systemButtonSize
 
           text: 'Restart'
           source: 'images/reboot.svg'
@@ -209,7 +226,7 @@ Rectangle {
     Rectangle {
       anchors.fill: parent
 
-      color: '#50ff0000'
+      color: '#20ff0000'
     }
   } // loginArea
 }
