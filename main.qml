@@ -71,6 +71,8 @@ Rectangle {
       borderWidth: 0
       color: 'transparent'
       arrowColor: 'transparent'
+      menuColor: '#000000'
+      textColor: '#ffffff'
 
       font.pixelSize: 14
     }
